@@ -4,6 +4,9 @@ Run with EXPO
 
 Features :
 
+**v0.1.2**
+* Use keyword from inputtext to process search
+
 **v0.1.1**
 * Use keyword from inputtext to process search
 * Retrieve film list from API
