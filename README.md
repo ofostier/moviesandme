@@ -13,6 +13,8 @@ Features :
 - npm install --save react-native-gesture-handler
 - npm install --save react-native
 - npm install --save react-navigation-stack @react-native-community/masked-view
+- npm install --save moment
+- npm install --save numeral
 
 
 **v0.1.3**
