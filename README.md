@@ -1,8 +1,22 @@
-# REACT NATIVE TUTORIAL
+#Movie And Me (REACT NATIVE TUTORIAL)
 
+##About
+This is a simple application to search films from the TDMB API
+with the capacity to show details for a film and add it to your favorite list.
+
+##Usage
 Run with EXPO
 
-Features :
+##Resources
+[Tutorial From OPENCLASSROOMS website](https://openclassrooms.com/fr/courses/4902061-developpez-une-application-mobile-react-native/4902068-decouvrez-le-developpement-mobile-actuel)
+
+##Features 
+
+**v0.2.0**
+* Function add to Favorites (using REDUX)
+- npm install --save redux
+- npm install --save react-redux
+
 
 **v0.1.4**
 * Add Film Detail Navigation screen with **StackNavigator**
