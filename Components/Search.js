@@ -9,6 +9,8 @@ class Search extends React.Component {
     constructor(props) {
         super(props)
         this.searchedText = ""
+        this.page = 0
+        this.totalPages = 0
         this.state = {
             films: [],
             isLoading: false
@@ -22,13 +24,28 @@ class Search extends React.Component {
         this.searchedText = text
     }
 
+    _searchFilm () {
+
+        this.page = 0
+        this.totalPages = 0
+        this.setState({
+            films: []
+        }, ()=> {
+            console.log("Page : " + this.page + " / TotalPages : " + this.totalPages + " / Nombre de films : " + this.state.films.length)
+
+            this._loadFilms()
+        })
+    }
+
     _loadFilms() {
         console.log(this.searchedText) // Un log pour vérifier qu'on a bien le texte du TextInput
         if (this.searchedText.length > 0) { // Seulement si le texte recherché n'est pas vide
             this.setState({ isLoading: true }) // Lancement du chargement
-            getFilmsFromApiWithSearchedText(this.searchedText).then(data => {
+            getFilmsFromApiWithSearchedText(this.searchedText, this.page+1).then(data => {
+                this.page = data.page
+                this.totalPages = data.total_pages
                 this.setState({
-                    films: data.results,
+                    films: [ ... this.state.films, ...data.results],
                     isLoading: false  // Arret du chargement
                 })
             })
@@ -55,14 +72,21 @@ class Search extends React.Component {
                     style={styles.textinput}
                     placeholder='Titre du film'
                     onChangeText={(text) => this._searchTextInputChanged(text)}
-                    onSubmitEditing={() => this._loadFilms()}
+                    onSubmitEditing={() => this._searchFilm()}
                 />
-                <Button style={styles.textinput} title='Rechercher' onPress={() => this._loadFilms()}/>
+                <Button style={styles.textinput} title='Rechercher' onPress={() => this._searchFilm()}/>
                 <FlatList
                     //data={[{key: '1', title: 'Rudra'}, {key: '2', title: 'Shiva'}, {key: '3', title: 'Parvati'}]}
                     data={this.state.films}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({item}) => <FilmItem film={item}/>}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={() => {
+                        console.log("onEndReadched List")
+                        if (this.page < this.totalPages) {
+                            this._loadFilms()
+                        }
+                    }}
                 />
                 {this._displayLoading()}
             </View>

@@ -4,6 +4,9 @@ Run with EXPO
 
 Features :
 
+**v0.1.3**
+* Add pagination between results list with infinite loop
+
 **v0.1.2**
 * Use keyword from inputtext to process search
 
