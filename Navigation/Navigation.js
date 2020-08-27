@@ -7,6 +7,9 @@ import {createBottomTabNavigator} from "react-navigation-tabs";
 import Search from "../Components/Search"
 import FilmDetail from "../Components/FilmDetail";
 import Favorites from "../Components/Favorites";
+import Test from "../Components/Test";
+import Mapit2 from "../Components/Mapit2";
+import Pinit from "../Components/Pinit";
 
 const SearchStackNavigator = createStackNavigator({
     Search: {
@@ -35,6 +38,22 @@ const FavoritesStackNavigator = createStackNavigator({
     }
 })
 
+const MapitStackNavigator = createStackNavigator({
+    Mapit: {
+        screen: Mapit2,
+        navigationOptions: {
+            title: 'Mapit'
+        }
+    },
+    Pinit: {
+        screen: Pinit,
+        navigationOptions: {
+            title: 'Detail du Favori'
+        }
+    }
+})
+
+
 const MoviesTabNavigator = createBottomTabNavigator(
     {
         Search: {
@@ -56,6 +75,26 @@ const MoviesTabNavigator = createBottomTabNavigator(
                         style={styles.icon}/>
                 }
             }
+        },
+        Test: {
+            screen: Test,
+            navigationOptions: {
+                tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
+                    return <Image
+                        source={require('../Images/test2.png')}
+                        style={styles.icon}/> // On applique un style pour les redimensionner comme il faut
+                }
+            }
+        },
+        Mapit: {
+            screen: Mapit2,
+            navigationOptions: {
+                tabBarIcon: () => {
+                    return <Image
+                        source={require('../Images/ic-map.png')}
+                        style={styles.iconmap}/>
+                }
+            }
         }
     },
     {
@@ -72,6 +111,10 @@ const styles = StyleSheet.create({
     icon: {
         width: 30,
         height: 30
+    },
+    iconmap: {
+        width: 25,
+        height: 25
     }
 })
 
