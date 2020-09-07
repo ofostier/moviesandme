@@ -1,0 +1,26 @@
+export default iconMapTagList = [
+    {
+        id:1,
+        order:1,
+        title:"camping",
+        img:require("../Images/ic-tent.png"),
+        img_off:require("../Images/ic-tent_off.png"),
+        img_marker:require("../Images/ic-tent_marker.png"),
+    },
+    {
+        id:2,
+        order:2,
+        title:"bivouac",
+        img:require("../Images/ic-fire.png"),
+        img_off:require("../Images/ic-fire_off.png"),
+        img_marker:require("../Images/ic-fire_marker.png"),
+    },
+    {
+        id:3,
+        order:3,
+        title:"map",
+        img:require("../Images/ic-map.png"),
+        img_off:require("../Images/ic-map.png"),
+        img_marker:require("../Images/ic-map_marker.png"),
+    }
+]
